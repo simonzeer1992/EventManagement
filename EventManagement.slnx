@@ -1,4 +1,22 @@
 <Solution>
+  <Folder Name="/Documentation/">
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/frontend/">
+    <File Path="frontend/index.html" />
+    <File Path="frontend/package.json" />
+    <File Path="frontend/package-lock.json" />
+    <File Path="frontend/tsconfig.json" />
+    <File Path="frontend/vite.config.ts" />
+  </Folder>
+  <Folder Name="/frontend/src/">
+    <File Path="frontend/src/App.tsx" />
+    <File Path="frontend/src/EventForm.tsx" />
+    <File Path="frontend/src/RegistrationForm.tsx" />
+    <File Path="frontend/src/api.ts" />
+    <File Path="frontend/src/main.tsx" />
+    <File Path="frontend/src/styles.css" />
+  </Folder>
   <Project Path="EventManagement.Api/EventManagement.Api.csproj" />
   <Project Path="EventManagement.Tests/EventManagement.Tests.csproj" />
 </Solution>

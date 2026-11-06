@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 namespace EventManagement.Api;
 
+/// <summary>Maps event and registration HTTP requests to the business service.</summary>
 [ApiController]
 [Route("api/events")]
 public class EventsController(EventService service) : ControllerBase
@@ -29,13 +30,13 @@ public class EventsController(EventService service) : ControllerBase
     }
 
     [HttpGet("{eventId:guid}/registrations")]
-    public ActionResult<Guid[]> GetRegistrations(Guid eventId) => service.GetRegistrations(eventId);
+    public ActionResult<RegistrationResponse[]> GetRegistrations(Guid eventId) => service.GetRegistrations(eventId);
 
     [HttpPost("{eventId:guid}/registrations")]
-    public IActionResult RegisterAttendee(Guid eventId, RegistrationRequest request)
+    public ActionResult<RegistrationResponse> RegisterAttendee(Guid eventId, RegistrationRequest request)
     {
-        service.RegisterAttendee(eventId, request.AttendeeId);
-        return StatusCode(201);
+        var registration = service.RegisterAttendee(eventId, request);
+        return StatusCode(201, registration);
     }
 
     [HttpDelete("{eventId:guid}/registrations/{attendeeId:guid}")]
